@@ -95,7 +95,17 @@ defmodule Issues.CLI do
   end
 
   def format_table(issues) do
-    IO.inspect issues
+    Issues.TableOutput.header()
+    issues
+    |> Enum.each(&output_row/1)
+    Issues.TableOutput.footer()
+  end
+
+  def output_row(row) do
+    number = Map.get(row, "number")
+    created_at = Map.get(row, "created_at")
+    title = Map.get(row, "title")
+    Issues.TableOutput.row(number, created_at, title)
   end
 
 end

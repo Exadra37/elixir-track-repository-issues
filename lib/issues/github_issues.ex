@@ -13,6 +13,7 @@ defmodule Issues.GithubIssues do
   end
 
   def issues_url(user, project) do
+    # https://api.github.com/repos/elixir/elixir-lang/issues
     "#{@github_url}/repos/#{user}/#{project}/issues"
   end
 
